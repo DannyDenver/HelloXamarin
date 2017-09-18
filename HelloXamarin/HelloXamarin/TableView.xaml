@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns:local="clr-namespace:HelloXamarin.Extensions"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloXamarin.TableView">
+  <TableView Intent="Form">
+      <TableRoot>
+        <TableSection Title="Basics">
+          <TextCell Text="Name" Detail="Mosh Hamedani"/>
+          <EntryCell Label="Title" Placeholder="(eg Shopping)" />
+          <SwitchCell Text="Notifications" On="true" OnChanged="Handle_Changed" />
+      
+          <local:DateCell />
+          <local:DateCell />
+          
+        </TableSection>
+        
+        
+      </TableRoot>   
+  </TableView>
+</ContentPage>

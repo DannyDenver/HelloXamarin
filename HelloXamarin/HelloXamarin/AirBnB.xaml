@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloXamarin.AirBnB">
+
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    
+  </ContentPage.Padding>
+  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+<StackLayout>
+  <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="5">
+    <SearchBar x:Name="searchbar" Placeholder="Search..." TextChanged="Handle_TextChanged"
+               RelativeLayout.WidthConstraint="{ConstraintExpression
+           Type=RelativeToParent,
+           Property=Width,
+           Factor=1}"
+               HorizontalOptions="FillAndExpand"
+
+            
+            />
+  </RelativeLayout>
+  <ListView x:Name="listView" SeparatorColor="Blue" HasUnevenRows="True"
+            
+            ItemTapped="Handle_ItemTapped"
+            ItemSelected="Handle_ItemSelected"
+    IsPullToRefreshEnabled="true"
+    Refreshing="Handle_Refreshing">
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding location}" Detail="{Binding startDate}">
+          <TextCell.ContextActions>
+
+            <MenuItem Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
+            <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+
+          </TextCell.ContextActions>
+
+
+        </TextCell>
+
+
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</StackLayout>
+</ContentPage>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloXamarin.ListPage">
+  
+<StackLayout>
+  <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="5">
+    <SearchBar Placeholder="Search..." TextChanged="Handle_TextChanged"
+               RelativeLayout.WidthConstraint="{ConstraintExpression
+           Type=RelativeToParent,
+           Property=Width,
+           Factor=1}"
+               HorizontalOptions="FillAndExpand"            
+            />
+  </RelativeLayout>
+  <ListView x:Name="listView" SeparatorColor="Blue" HasUnevenRows="True"            
+            ItemTapped="Handle_ItemTapped"
+            ItemSelected="Handle_ItemSelected">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding address}" Detail="{Binding contact}">
+          <TextCell.ContextActions>
+
+            <MenuItem Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
+            <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+
+          </TextCell.ContextActions>
+          
+          
+        </TextCell>   
+      </DataTemplate>
+    </ListView.ItemTemplate>
+      </ListView>
+  </StackLayout>
+</ContentPage>
+                <!---This above is for the little scroll feature in ios
+              IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Title}"
+               GroupShortNameBinding="{Binding ShortTitle}"
+                          IsPullToRefreshEnabled="True"
+            Refreshing="Handle_Refreshing"
+                
+                  
+                    -->
+   <!---
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ImageCell ImageSource="{Binding ImageURL}" Text="{Binding Name}" Detail="{Binding Status}" DetailColor="Purple"/>
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" Padding="5">
+            <Image Source="{Binding ImageURL}" />
+            <StackLayout HorizontalOptions="StartAndExpand">
+              <Label Text="{Binding Name}" />
+              <Label Text="{Binding Status}" TextColor="Gray"/>
+            </StackLayout>
+            <Button Text="Follow"/>            
+          </StackLayout>   
+        </ViewCell>
+    
+      </DataTemplate>     
+    </ListView.ItemTemplate>
+    -->
+
+
